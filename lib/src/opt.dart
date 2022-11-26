@@ -1,4 +1,4 @@
-import 'package:dart_core/dart_core.dart';
+import 'package:meta/meta.dart';
 
 import 'exception/chained_exception.dart';
 
