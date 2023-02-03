@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart';
-
 import 'exception/chained_exception.dart';
 
 /// A container object which may or may not contain a non-null value
@@ -45,8 +43,7 @@ class None<T extends Object> implements Opt<T> {
   bool has() => false;
 
   @override
-  @alwaysThrows
-  T get() => throw const ChainedException.origin(
+  Never get() => throw const ChainedException.origin(
         'Opt.get() has been called without verifying that Opt.has() returned true!',
       );
 
