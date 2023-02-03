@@ -5,10 +5,10 @@ publish_to: none
 repository: https://github.com/qoob23/dart-core
 
 environment:
-  sdk: '>=2.17.6 <3.0.0'
+  sdk: '>=2.18.6 <3.0.0'
 
 dependencies:
-  collection: ^1.16.0
+  collection: ^1.17.0
   directed_graph: ^0.3.7
   meta: ^1.7.0
 

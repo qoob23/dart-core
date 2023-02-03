@@ -72,7 +72,6 @@ Original exception:
 $_foreignException''';
 
   @override
-  @alwaysThrows
   Opt<ChainedException> _origin() => None();
 }
 
