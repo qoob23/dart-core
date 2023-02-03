@@ -30,11 +30,11 @@ abstract class ChainedException implements Exception {
 
   @nonVirtual
   String print(StackTrace stackTrace) =>
-      _FormattedChainedException(this).print(stackTrace);
+      _FormattedChainedException(this).print(trace: stackTrace);
 
   @override
   @Deprecated('Use print')
-  String toString() => super.toString();
+  String toString() => _FormattedChainedException(this).print(trace: null);
 
   /// Original exception
   Opt<ChainedException> _origin();
@@ -67,7 +67,9 @@ class _ForeignOrigin extends ChainedException {
   @override
   String _message() => '''
 $_context
-Foreign exception: $_foreignException''';
+
+Original exception:
+$_foreignException''';
 
   @override
   @alwaysThrows

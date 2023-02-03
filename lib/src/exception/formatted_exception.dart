@@ -5,11 +5,11 @@ class _FormattedChainedException {
 
   const _FormattedChainedException(this._ex);
 
-  String print(StackTrace stackTrace) {
+  String print({required StackTrace? trace}) {
     final buffer = StringBuffer();
     buffer.writeln();
     buffer.writeln('--------------------- Exception ---------------------');
-    printTo(buffer, _ex, stackTrace);
+    printTo(buffer, _ex, trace);
     buffer.writeln('-----------------------------------------------------');
     return buffer.toString();
   }
@@ -17,7 +17,7 @@ class _FormattedChainedException {
   void printTo(
     StringBuffer output,
     ChainedException ex,
-    StackTrace stackTrace, [
+    StackTrace? stackTrace, [
     int indent = 0,
   ]) {
     final prefix = '${'██' * indent} ';
@@ -39,11 +39,11 @@ class _FormattedChainedException {
       json.forEach(printPrefixed);
     }
 
-    output.writeln();
     final origin = ex._origin();
     if (origin.has()) {
+      output.writeln();
       printTo(output, origin.get(), stackTrace, indent + 1);
-    } else {
+    } else if (stackTrace != null) {
       output.writeln('Trace:');
       output.write(stackTrace);
     }
